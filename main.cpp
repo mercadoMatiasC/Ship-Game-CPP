@@ -105,19 +105,18 @@ int main()
     return 0;
 }
 
-//SPACESHIP
 void Spaceship::paint()
 {
     gotoxy(x, y);
-    printf("   ▲    ");
+    printf("   ^    ");
     gotoxy(x, y + 1);
-    printf("  / %c  ", 92);
+    printf("  / \\  ");
     gotoxy(x, y + 2);
-    printf(" / Δ %c ", 92);
+    printf(" / ^ \\ ");
     gotoxy(x, y + 3);
-    printf("/     %c ", 92);
+    printf("/     \\ ");
     gotoxy(x, y + 4);
-    printf("▼-----▼ ");
+    printf("v-----v ");
 }
 void Spaceship::remove()
 {
@@ -160,7 +159,7 @@ void Spaceship::displayLives()
     for (int i = 0; i < lives; i++)
     {
         gotoxy(60 + i, 9);
-        printf("♥");
+        printf("*");
     }
 }
 void Spaceship::displayScore()
@@ -180,7 +179,6 @@ void Spaceship::gameOverScreen()
     printf("Score: %d", score);
 }
 
-//ASTEROID
 void Asteroid::paint()
 {
     gotoxy(x, y);
@@ -214,10 +212,8 @@ void Asteroid::collision(Spaceship *sp)
 
 void gotoxy(int x, int y)
 {
-    //HANDLE
     HANDLE handling = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    //COORDINATES
     COORD pos;
     pos.X = x;
     pos.Y = y;
@@ -225,7 +221,6 @@ void gotoxy(int x, int y)
 }
 void hideCursor()
 {
-    //HANDLE
     HANDLE handling = GetStdHandle(STD_OUTPUT_HANDLE);
 
     CONSOLE_CURSOR_INFO actualCursor;
@@ -236,27 +231,24 @@ void hideCursor()
 }
 void scene()
 {
-    //HORIZONTAL
     for (int i = 3; i < 78; i++)
     {
         gotoxy(i, 3);
-        printf("═");
+        printf("-");
         gotoxy(i, 32);
-        printf("═");
+        printf("-");
     }
 
-    //VERTICAL
     for (int i = 4; i < 32; i++)
     {
         gotoxy(2, i);
-        printf("║");
+        printf("|");
         gotoxy(50, i);
-        printf("║");
+        printf("|");
         gotoxy(78, i);
-        printf("║");
+        printf("|");
     }
 
-    //UI
     gotoxy(54, 5);
     printf("<< PROTO-SPACESHIP >>");
     gotoxy(53, 30);
